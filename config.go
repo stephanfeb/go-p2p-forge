@@ -8,8 +8,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	forgehost "github.com/twostack/go-p2p-forge/host"
-	"github.com/twostack/go-p2p-forge/node"
+	forgehost "github.com/stephanfeb/go-p2p-forge/host"
+	"github.com/stephanfeb/go-p2p-forge/node"
 )
 
 // Config holds framework-level server configuration.

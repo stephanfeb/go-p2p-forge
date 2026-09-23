@@ -7,10 +7,10 @@ import (
 	"log/slog"
 	"testing"
 
-	forge "github.com/twostack/go-p2p-forge"
-	"github.com/twostack/go-p2p-forge/codec"
-	"github.com/twostack/go-p2p-forge/forgetest"
-	"github.com/twostack/go-p2p-forge/middleware"
+	forge "github.com/stephanfeb/go-p2p-forge"
+	"github.com/stephanfeb/go-p2p-forge/codec"
+	"github.com/stephanfeb/go-p2p-forge/forgetest"
+	"github.com/stephanfeb/go-p2p-forge/middleware"
 )
 
 func testLogger() *slog.Logger {

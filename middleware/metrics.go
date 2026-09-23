@@ -3,7 +3,7 @@ package middleware
 import (
 	"time"
 
-	forge "github.com/twostack/go-p2p-forge"
+	forge "github.com/stephanfeb/go-p2p-forge"
 )
 
 // MetricsMiddleware returns a forge.Middleware that records stream timing and

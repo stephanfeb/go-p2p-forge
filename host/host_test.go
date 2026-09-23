@@ -10,7 +10,7 @@ import (
 	"github.com/libp2p/go-libp2p/core/crypto"
 	"github.com/libp2p/go-libp2p/p2p/transport/tcp"
 
-	forgehost "github.com/twostack/go-p2p-forge/host"
+	forgehost "github.com/stephanfeb/go-p2p-forge/host"
 )
 
 func testKey(t *testing.T) crypto.PrivKey {

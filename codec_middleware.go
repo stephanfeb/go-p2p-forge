@@ -3,7 +3,7 @@ package forge
 import (
 	"io"
 
-	"github.com/twostack/go-p2p-forge/codec"
+	"github.com/stephanfeb/go-p2p-forge/codec"
 )
 
 // FrameDecodeMiddleware reads a length-prefixed frame from the stream and

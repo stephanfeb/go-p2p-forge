@@ -3,8 +3,8 @@ package middleware
 import (
 	"testing"
 
-	forge "github.com/twostack/go-p2p-forge"
-	"github.com/twostack/go-p2p-forge/forgetest"
+	forge "github.com/stephanfeb/go-p2p-forge"
+	"github.com/stephanfeb/go-p2p-forge/forgetest"
 )
 
 type recordingCollector struct {

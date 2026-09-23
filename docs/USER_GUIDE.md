@@ -96,7 +96,7 @@ Each middleware calls `next()` to proceed. The pipeline executes **recursively**
 ### Installation
 
 ```bash
-go get github.com/twostack/go-p2p-forge
+go get github.com/stephanfeb/go-p2p-forge
 ```
 
 ### Minimal Echo Server
@@ -113,9 +113,9 @@ import (
     "os/signal"
     "time"
 
-    forge "github.com/twostack/go-p2p-forge"
-    "github.com/twostack/go-p2p-forge/codec"
-    "github.com/twostack/go-p2p-forge/middleware"
+    forge "github.com/stephanfeb/go-p2p-forge"
+    "github.com/stephanfeb/go-p2p-forge/codec"
+    "github.com/stephanfeb/go-p2p-forge/middleware"
 )
 
 type PingRequest struct {
@@ -176,7 +176,7 @@ The maximum frame size is **10 MB** (`codec.MaxFrameSize`). Empty frames (length
 You can read and write frames manually with `codec.ReadFrame()` and `codec.WriteFrame()`:
 
 ```go
-import "github.com/twostack/go-p2p-forge/codec"
+import "github.com/stephanfeb/go-p2p-forge/codec"
 
 // Write a frame
 payload := []byte(`{"message":"hello"}`)
@@ -639,7 +639,7 @@ srv := forge.NewServer(forge.WithPort(9000))
 You can also manage identity explicitly:
 
 ```go
-import "github.com/twostack/go-p2p-forge/host"
+import "github.com/stephanfeb/go-p2p-forge/host"
 
 // Load from file (supports hex, base64, or raw 32-byte formats)
 priv, _ := host.LoadIdentityFromFile("./my-identity.key")
@@ -1062,7 +1062,7 @@ Rollback:  If B fails to start → A is stopped
 The most common background task pattern is "do work on a timer." `TickerService` handles this:
 
 ```go
-import "github.com/twostack/go-p2p-forge/service"
+import "github.com/stephanfeb/go-p2p-forge/service"
 
 announcer := service.NewTickerService(
     "dht-announcer",         // name (for logging)
@@ -1271,7 +1271,7 @@ collector := srv.Metrics()
 The `HealthCheck` service exposes HTTP endpoints for orchestrator integration:
 
 ```go
-import "github.com/twostack/go-p2p-forge/service"
+import "github.com/stephanfeb/go-p2p-forge/service"
 
 hc := service.NewHealthCheck(":8080", logger)
 
@@ -1342,8 +1342,8 @@ import (
     "encoding/json"
     "testing"
 
-    forge "github.com/twostack/go-p2p-forge"
-    "github.com/twostack/go-p2p-forge/forgetest"
+    forge "github.com/stephanfeb/go-p2p-forge"
+    "github.com/stephanfeb/go-p2p-forge/forgetest"
 )
 
 func TestPingHandler(t *testing.T) {

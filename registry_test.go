@@ -3,8 +3,8 @@ package forge_test
 import (
 	"testing"
 
-	forge "github.com/twostack/go-p2p-forge"
-	"github.com/twostack/go-p2p-forge/forgetest"
+	forge "github.com/stephanfeb/go-p2p-forge"
+	"github.com/stephanfeb/go-p2p-forge/forgetest"
 )
 
 func TestRegistry_ProvideAndRetrieve(t *testing.T) {

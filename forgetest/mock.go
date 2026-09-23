@@ -15,7 +15,7 @@ import (
 	"github.com/libp2p/go-libp2p/core/protocol"
 	multiaddr "github.com/multiformats/go-multiaddr"
 
-	"github.com/twostack/go-p2p-forge/codec"
+	"github.com/stephanfeb/go-p2p-forge/codec"
 )
 
 // MockStream implements network.Stream for testing without libp2p.

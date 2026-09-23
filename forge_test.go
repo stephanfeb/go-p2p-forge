@@ -15,9 +15,9 @@ import (
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/libp2p/go-libp2p/p2p/transport/tcp"
 
-	forge "github.com/twostack/go-p2p-forge"
-	"github.com/twostack/go-p2p-forge/codec"
-	"github.com/twostack/go-p2p-forge/forgetest"
+	forge "github.com/stephanfeb/go-p2p-forge"
+	"github.com/stephanfeb/go-p2p-forge/codec"
+	"github.com/stephanfeb/go-p2p-forge/forgetest"
 )
 
 func silentLogger() *slog.Logger {

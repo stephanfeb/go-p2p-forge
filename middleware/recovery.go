@@ -3,7 +3,7 @@ package middleware
 import (
 	"errors"
 
-	forge "github.com/twostack/go-p2p-forge"
+	forge "github.com/stephanfeb/go-p2p-forge"
 )
 
 // ErrPanic indicates a handler panicked and was recovered.

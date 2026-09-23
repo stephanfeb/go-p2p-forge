@@ -3,8 +3,8 @@ package middleware_test
 import (
 	"testing"
 
-	forge "github.com/twostack/go-p2p-forge"
-	"github.com/twostack/go-p2p-forge/middleware"
+	forge "github.com/stephanfeb/go-p2p-forge"
+	"github.com/stephanfeb/go-p2p-forge/middleware"
 )
 
 // newOpContext builds a StreamContext carrying a JSON envelope, with the

@@ -14,9 +14,9 @@ import (
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/libp2p/go-libp2p/core/protocol"
 
-	forgehost "github.com/twostack/go-p2p-forge/host"
-	"github.com/twostack/go-p2p-forge/node"
-	"github.com/twostack/go-p2p-forge/service"
+	forgehost "github.com/stephanfeb/go-p2p-forge/host"
+	"github.com/stephanfeb/go-p2p-forge/node"
+	"github.com/stephanfeb/go-p2p-forge/service"
 )
 
 // Server is the main go-p2p-forge server, analogous to Netty's ServerBootstrap.

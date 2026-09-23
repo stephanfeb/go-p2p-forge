@@ -10,7 +10,7 @@ import (
 
 	"github.com/libp2p/go-libp2p/core/peer"
 
-	forge "github.com/twostack/go-p2p-forge"
+	forge "github.com/stephanfeb/go-p2p-forge"
 )
 
 // The whole point of reporting a wait is that it is long enough to work. A

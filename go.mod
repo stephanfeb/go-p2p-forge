@@ -1,4 +1,4 @@
-module github.com/twostack/go-p2p-forge
+module github.com/stephanfeb/go-p2p-forge
 
 go 1.25.7
 

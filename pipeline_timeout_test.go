@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	forge "github.com/twostack/go-p2p-forge"
-	"github.com/twostack/go-p2p-forge/codec"
-	"github.com/twostack/go-p2p-forge/forgetest"
+	forge "github.com/stephanfeb/go-p2p-forge"
+	"github.com/stephanfeb/go-p2p-forge/codec"
+	"github.com/stephanfeb/go-p2p-forge/forgetest"
 )
 
 // A stream that carries only a length prefix used to occupy a goroutine

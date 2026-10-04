@@ -2,6 +2,7 @@
 package host
 
 import (
+	"crypto/ed25519"
 	"crypto/rand"
 	"encoding/base64"
 	"encoding/hex"
@@ -52,21 +53,27 @@ func LoadOrCreateIdentity(path string) (crypto.PrivKey, error) {
 
 // LoadIdentityFromSeed creates an Ed25519 private key from a 32-byte seed.
 func LoadIdentityFromSeed(seed []byte) (crypto.PrivKey, error) {
-	if len(seed) != 32 {
-		return nil, fmt.Errorf("seed must be 32 bytes, got %d", len(seed))
+	if len(seed) != ed25519.SeedSize {
+		return nil, fmt.Errorf("seed must be %d bytes, got %d", ed25519.SeedSize, len(seed))
 	}
-	return crypto.UnmarshalEd25519PrivateKey(seed)
+	// UnmarshalEd25519PrivateKey takes the 64-byte private key (seed then
+	// public key), not the seed.
+	return crypto.UnmarshalEd25519PrivateKey(ed25519.NewKeyFromSeed(seed))
 }
 
-// LoadIdentityFromFile loads an identity from a file supporting multiple formats:
-// hex (64 chars), base64 (44 chars), or raw 32 bytes.
+// LoadIdentityFromFile loads an Ed25519 identity from a file in one of these
+// formats: a 32-byte seed as raw bytes, 64 hex characters or 44 base64
+// characters; or the 64-byte private key that LoadOrCreateIdentity writes.
 func LoadIdentityFromFile(path string) (crypto.PrivKey, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("read identity file: %w", err)
 	}
 
-	if len(data) == 32 {
+	switch len(data) {
+	case ed25519.SeedSize:
+		return LoadIdentityFromSeed(data)
+	case ed25519.PrivateKeySize:
 		return crypto.UnmarshalEd25519PrivateKey(data)
 	}
 
@@ -74,19 +81,19 @@ func LoadIdentityFromFile(path string) (crypto.PrivKey, error) {
 
 	if len(content) == 64 {
 		seed, err := hex.DecodeString(content)
-		if err == nil && len(seed) == 32 {
-			return crypto.UnmarshalEd25519PrivateKey(seed)
+		if err == nil && len(seed) == ed25519.SeedSize {
+			return LoadIdentityFromSeed(seed)
 		}
 	}
 
 	if len(content) == 44 {
 		seed, err := base64.StdEncoding.DecodeString(content)
-		if err == nil && len(seed) == 32 {
-			return crypto.UnmarshalEd25519PrivateKey(seed)
+		if err == nil && len(seed) == ed25519.SeedSize {
+			return LoadIdentityFromSeed(seed)
 		}
 	}
 
-	return nil, fmt.Errorf("invalid identity format: expected 32 raw bytes, 64 hex chars, or 44 base64 chars")
+	return nil, fmt.Errorf("invalid identity format: expected a 32-byte seed (raw, 64 hex chars or 44 base64 chars) or a 64-byte private key")
 }
 
 // PeerIDFromIdentity derives the peer ID from a private key.

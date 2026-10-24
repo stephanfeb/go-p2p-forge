@@ -76,6 +76,13 @@ type RelayLimits struct {
 	ReservationTTL         time.Duration `yaml:"reservation_ttl"`
 	ConnectionDuration     time.Duration `yaml:"connection_duration"`
 	ConnectionData         int64         `yaml:"connection_data"`
+	// UnlimitedConnections relays connections for as long, and as much
+	// data, as the two peers want; ConnectionDuration and ConnectionData
+	// are then ignored. Without it each relayed connection is cut at those
+	// limits (zero takes go-libp2p's 2 minutes and 128 KiB), which is only
+	// enough to coordinate a hole punch. Peers see an unlimited relayed
+	// connection as an ordinary one, not a limited one.
+	UnlimitedConnections bool `yaml:"unlimited_connections"`
 }
 
 // DefaultConfig returns sensible defaults for a libp2p server host.
@@ -247,6 +254,10 @@ func applyRelayLimits(rc *relayv2.Resources, rl *RelayLimits) {
 	}
 	if rl.ReservationTTL > 0 {
 		rc.ReservationTTL = rl.ReservationTTL
+	}
+	if rl.UnlimitedConnections {
+		rc.Limit = nil
+		return
 	}
 	if rl.ConnectionDuration > 0 {
 		rc.Limit.Duration = rl.ConnectionDuration
